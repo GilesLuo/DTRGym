@@ -21,7 +21,11 @@ jobs:
     - name: Install pypa/build
       run: >-
         python3 -m pip install build --user
-
+        
+    - name: Clean previous build artifacts
+      run: rm -rf build/ dist/ *.egg-info
+      # This removes any previous build artifacts to ensure a clean state
+      
     - name: Build a binary wheel and a source tarball
       run: python3 -m build
 
@@ -47,7 +51,11 @@ jobs:
     - name: Install pypa/build
       run: >-
         python3 -m pip install build --user
-
+    - name: Clean previous build artifacts
+    
+      run: rm -rf build/ dist/ *.egg-info
+      # This removes any previous build artifacts to ensure a clean state
+      
     - name: Build a binary wheel and a source tarball
       run: python3 -m build
 
