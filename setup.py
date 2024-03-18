@@ -10,6 +10,7 @@ def get_version() -> str:
 def get_install_requires():
     return [
         "tianshou==0.5.0",
+        "simglucose==0.2.3",
         "torch>=1.13.0",
         "packaging",
         "tqdm",

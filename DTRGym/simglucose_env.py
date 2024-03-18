@@ -8,7 +8,7 @@ from simglucose.controller.base import Action
 from simglucose.analysis.risk import risk_index
 import pandas as pd
 import numpy as np
-import pkg_resources
+from importlib import resources
 from gym.utils import seeding
 from functools import partial
 
@@ -77,10 +77,13 @@ class T1DSimEnv(gym.Env):
     Time unit is 1 minute. The max_t will change according to the sensor's sample time.
     '''
     metadata = {'render.modes': ['human']}
-    patient_list = pd.read_csv(pkg_resources.resource_filename('simglucose',
-                                                               'params/vpatient_params.csv'))["Name"].to_list()
-    pump_params = pd.read_csv(pkg_resources.resource_filename(
-        'simglucose', 'params/pump_params.csv'))
+    # Accessing resources with files() in Python 3.9+
+    vpatient_params_path = resources.files('simglucose.params') / 'vpatient_params.csv'
+    with vpatient_params_path.open() as f:
+        patient_list = pd.read_csv(f)["Name"].to_list()
+    pump_params_path = resources.files('simglucose.params') / 'pump_params.csv'
+    with pump_params_path.open() as f:
+        pump_params = pd.read_csv(f)
     INSULIN_PUMP_HARDWARE = 'Insulet'
 
     def __init__(self, max_t: int = 24*60, reward_fn=risk_reward_fn,
