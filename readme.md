@@ -70,12 +70,12 @@ print(env.observation_space.shape)
 ### Simulation Environments
 There are four simulation environments in the DTRGym. Each environment simulates a specific disease and treatment.
 
-| Environment                                         | Disease        | Treatment                                   | Dynamics | Action Space |
-|-----------------------------------------------------|----------------|---------------------------------------------|----------|--------------|
-| [*AhnChemoEnv*](ahn_chemo_env.py)             | Cancer         | Chemotherapy                               | ODE      | Cont./Disc.  |
-| [*GhaffariCancerEnv*](ghaffari_cancer_env.py) | Cancer         | Chemotherapy & Radiotherapy                | ODE      | Cont./Disc.  |
-| [*OberstSepsisEnv*](OberstSepsisEnv/env.py)   | Sepsis         | Antibiotics, Mechanical Ventilation, Vasopressors | SCM      | Disc.        |
-| [*SimGlucoseEnv*](simglucose_env.py)          | Type-1 Diabetes | Insulin Administration                    | ODE      | Cont./Disc.  |
+| Environment                                   | Disease        | Treatment                                   | Dynamics | Action Space |
+|-----------------------------------------------|----------------|---------------------------------------------|----------|--------------|
+| [*AhnChemoEnv*](DTRGym/ahn_chemo_env.py)      | Cancer         | Chemotherapy                               | ODE      | Cont./Disc.  |
+| [*GhaffariCancerEnv*](DTRGym/ghaffari_cancer_env.py) | Cancer         | Chemotherapy & Radiotherapy                | ODE      | Cont./Disc.  |
+| [*OberstSepsisEnv*](DTRGym/OberstSepsisEnv/env.py)   | Sepsis         | Antibiotics, Mechanical Ventilation, Vasopressors | SCM      | Disc.        |
+| [*SimGlucoseEnv*](DTRGym/simglucose_env.py)          | Type-1 Diabetes | Insulin Administration                    | ODE      | Cont./Disc.  |
 
 ### Environment Settings
 There are five default settings for each environment. The settings are designed to simulate different scenarios in the real world. The settings include:
