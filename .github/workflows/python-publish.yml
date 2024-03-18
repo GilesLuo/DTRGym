@@ -1,0 +1,58 @@
+name: Conditional Publish to PyPI or TestPyPI
+
+on:
+  push:
+    tags:
+      - '*'
+
+jobs:
+  publish-to-testpypi:
+    if: "contains(github.ref, 'test')"
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+      name: Checkout code
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: "3.x"
+
+    - name: Install pypa/build
+      run: >-
+        python3 -m pip install build --user
+
+    - name: Build a binary wheel and a source tarball
+      run: python3 -m build
+
+    - name: Publish distribution to TestPyPI
+      uses: pypa/gh-action-pypi-publish@release/v1
+      with:
+        repository-url: https://test.pypi.org/legacy/
+        user: __token__
+        password: ${{ secrets.TESTPYPI_DTRGYM_PUBLISH }}
+
+  publish-to-pypi:
+    if: "!contains(github.ref, 'test')"
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+      name: Checkout code
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: "3.x"
+
+    - name: Install pypa/build
+      run: >-
+        python3 -m pip install build --user
+
+    - name: Build a binary wheel and a source tarball
+      run: python3 -m build
+
+    - name: Publish distribution to PyPI
+      uses: pypa/gh-action-pypi-publish@release/v1
+      with:
+        user: __token__
+        password: ${{ secrets.PYPI_DTRGYM_PUBLISH }}
