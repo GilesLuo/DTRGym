@@ -1,48 +1,121 @@
-# Simulation Environment
-DTRGym provided RL environments simulating dynamics of Cancer, Diabetes and Sepsis. All the environments are implemented via standard gymnasium and can be used simply by gymnasium.make()
+<h3 align="center">DTR-Gym</h3>
 
-## Table of Contents
+<div align="center">
 
-- [Simulation Environment](#simulation-environment)
-  - [Table of Contents](#table-of-contents)
-  - [Installation](#installation)
-  - [Usage](#usage)
-  - [Configuration](#configuration)
-    - [Customize maximum timestep](#customize-maximum-timestep)
-    - [Choose action space](#choose-action-space)
-    - [Customize action number (for Discrete Action Space Env)](#customize-action-number-for-discrete-action-space-env)
-  - [Troubleshooting](#troubleshooting)
-  - [Contributing](#contributing)
-  - [License](#license)
-  - [Additional Resources](#additional-resources)
+  [![Status](https://img.shields.io/badge/status-active-success.svg)]() 
+  [![GitHub Issues](https://img.shields.io/github/issues/kylelobo/The-Documentation-Compendium.svg)](https://github.com/GilesLuo/SimMedEnv/issues)
+  [![GitHub Pull Requests](https://img.shields.io/github/issues-pr/kylelobo/The-Documentation-Compendium.svg)](https://github.com/GilesLuo/SimMedEnv/pulls)
+  [![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
 
-## Installation
-todo: Add pypi installation
-1. Clone the repository: `git clone https://github.com/your-username/your-project.git](https://github.com/GilesLuo/SimMedEnv.git)`
-2. Navigate to the project directory: `cd your-project`
+</div>
 
-## Usage
-Instructions on how to use your project:
+---
 
-1. Include the library in your code: `import DTRGym`
-2. Create the Environment: `Env = gym.make(id)`
+<p align="center"> An environment benchmark that increases realism of clinical treatment simulations.
+    <br> 
+</p>
 
-Here's an example of using the library:
+## 📝 Table of Contents
+- [About](#about)
+- [Getting Started](#getting_started)
+- [Module Description](#module_description)
+- [Usage](#usage)
+- [Reference](#reference)
+- [Release and Contribution](#release_and_contributing)
+- [Special Thanks](#special_thanks)
+- [Acknowledge](#ccknowledgement)
 
-```python
-import DTRGym
+## 🧐 About <a name = "about"></a>
+DTR-Gym is a benchmarking platform with four unique simulation environments aimed at improving treatments in areas including cancer chemotherapy, tumor growth, diabetes, and sepsis therapy.
 
-env = gym.make(DTRGym.registered_id[0])
+The design of DTR-Gym is committed to replicate the intricacies of real clinical scenarios, thereby providing a robust framework for exploring and evaluating reinforcement learning algorithms.
+
+
+## 🏁 Getting Started <a name = "getting_started"></a>
+These instructions will get you a copy of the project up and running on your local machine.
+
+### Prerequisites
++ Python 3.10: The project is developed using Python 3.10. It is recommended to use the same version to avoid compatibility issues.
+
+### Installing
+1. Clone the repository
+```
+git clone git@github.com:GilesLuo/SimMedEnv.git
+```
+2. Install the required packages
+```
+cd SimMedEnv
+pip install -r requirements.txt
 ```
 
-## Configuration
+3. Test the installation
+```
+python test_installation.py
+```
+
+### Initialise the Environment
+
+You can run the example by:
+```python
+import gymnasium as gym
+import DTRGym  # this line is necessary!
+
+env = gym.make('AhnChemoEnv-discrete', n_act=11)
+print(env.action_space.n)
+print(env.observation_space.shape)
+```
+
+## 🎈 Module Description <a name="module_description"></a>
+
+### Simulation Environments
+There are four simulation environments in the DTRGym. Each environment simulates a specific disease and treatment.
+
+| Environment                                         | Disease        | Treatment                                   | Dynamics | Action Space |
+|-----------------------------------------------------|----------------|---------------------------------------------|----------|--------------|
+| [*AhnChemoEnv*](ahn_chemo_env.py)             | Cancer         | Chemotherapy                               | ODE      | Cont./Disc.  |
+| [*GhaffariCancerEnv*](ghaffari_cancer_env.py) | Cancer         | Chemotherapy & Radiotherapy                | ODE      | Cont./Disc.  |
+| [*OberstSepsisEnv*](OberstSepsisEnv/env.py)   | Sepsis         | Antibiotics, Mechanical Ventilation, Vasopressors | SCM      | Disc.        |
+| [*SimGlucoseEnv*](simglucose_env.py)          | Type-1 Diabetes | Insulin Administration                    | ODE      | Cont./Disc.  |
+
+### Environment Settings
+There are five default settings for each environment. The settings are designed to simulate different scenarios in the real world. The settings include:
+
+| Setting | Description                                                                        |
+|---------|------------------------------------------------------------------------------------|
+| 1       | No PK/PD variation, no observation noise, no missing values. |
+| 2       | PK/PD variation, no observation noise, no missing values. |
+| 3       | PK/PD variation, observation noise (medium), no missing values. |
+| 4       | PK/PD variation, observation noise (large), no missing values. |
+| 5       | PK/PD variation, observation noise (large), missing values. |
+
+For different environments, the variations are defined as follows:
+
+| Environment            | PK/PD Variation                            | Observation Noise (Medium)             | Observation Noise (Large)          | Missing Values |
+|------------------------|--------------------------------------------|----------------------------------------|------------------------------------|----------------|
+| *AhnChemoEnv*          | 10%                                        | 20%                                    | 50%                                | 50%            |
+| *GhaffariCancerEnv*    | 10%                                        | 10%                                    | 20%                                | 50%            |
+| *OberstSepsisEnv*      | 10%                                        | 20%                                    | 50%                                | 50%            |
+| *SimGlucoseEnv*        | Parameters of different patients          | Use data from simulated glucose monitor.| Further randomize food intake times.| 50%           |
+
+
+## Usage <a name="usage"></a>
+### Use Default Environment Configuration
+DTR-Gym provides default environment configuration to simulate the real-world clinical scenarios. For example, if you want to use the setting 1, you can initialise the environment by
+```python
+import gymnasium as gym
+import DTRGym
+
+env = gym.make("AhnChemoEnv-continuous-setting1")
+```
+
 ### Customize maximum timestep
 You can set the maximum available timestep for the environment by passing value to `max_t`. Here's an example:
 
 ```python
+import gymnasium as gym
 import DTRGym
 
-env = gym.make(DTRGym.registered_id[0], max_t=50)
+env = gym.make("AhnChemoEnv-continuous", max_t=50)
 print(env.max_t)
 ```
 
@@ -73,40 +146,24 @@ env = gym.make("AhnChemoEnv-discrete", n_act=5)
 print(env.n_act)
 ```
 
-## Troubleshooting
-
-In the event that you encounter difficulties while trying to use this project, the following tips may help you diagnose and resolve the issue:
-
-1. Issue: KeyError: 'The environment id is not recognized'
-Solution: Make sure you have import sim_env, since the register code is in sim_env.__init__.py. Also make sure that the environment ID you are trying to use with gym.make() is correct and registered in gym. You can check available environment IDs using the `sim_env.registered_id` list.
-
-
-## Contributing
-
-## Contributing
-
-We welcome contributions from the community! Priority goes to NEW ENVIRONMENTS CONTRIBUTION.
-
-If you would like to contribute to the project, please follow these steps:
-
-1. **Fork the Repository**: Start by forking the repository to your GitHub account.
-
-2. **Create a Branch**: Create a branch in your fork for your contributions. It's best to use a clear and descriptive name for your branch.
-
-3. **Make Your Changes**: Implement your changes, additions, or fixes in your branch. Please adhere to the coding standards and guidelines of the project.
-
-4. **Write or Update Tests**: If you are adding new functionality, please include tests that cover your changes. If you are fixing a bug, ensure that it is covered by tests and consider adding new tests if necessary.
-
-5. **Run the Tests**: Make sure all tests pass, and your changes do not introduce any new issues or regressions.
-
-6. **Update Documentation**: If your changes involve new features or changes that require updates to the documentation, please include those updates in your contributions.
-
-7. **Submit a Pull Request**: Once your changes are complete, and you have tested your contributions, submit a pull request to the original repository. Please provide a clear description of the changes and any relevant issue numbers.
-
-We will review your pull request as soon as possible. Please be patient, and feel free to update your pull request based on feedback from the project maintainers.
-
-Thank you for considering contributing to our project! We look forward to reviewing your contributions.
+## Reference <a name="reference"></a>
+If you use the DTR-Gym in your research, please cite the following paper:
+```
+todo
+```
 
 
-## License
-We use MIT License for this project. You can find the license in the root directory.
+## Release and Contributing <a name = "release_and_contributing"></a>
+todo
+
+
+## ✍️ Sepcial Thanks <a name = "special_thanks"></a>
+Special thanks to the following contributors that make the DTR-Bench possible:
+- [@Mingcheng Zhu](https://github.com/JasonZuu) - who developed DTRGym and produced extensive DTRBench experiments.
+- To be continued
+
+## 🎉 Acknowledgement <a name = "acknowledgement"></a>
+  - [Gymnasium](https://github.com/Farama-Foundation/Gymnasium)
+  - [Simglucose](https://github.com/jxx123/simglucose)
+  - [gumbel-max-scm](https://github.com/clinicalml/gumbel-max-scm)
+
