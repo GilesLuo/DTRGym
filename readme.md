@@ -83,8 +83,30 @@ Solution: Make sure you have import sim_env, since the register code is in sim_e
 
 ## Contributing
 
-todo
+## Contributing
+
+We welcome contributions from the community! Priority goes to NEW ENVIRONMENTS CONTRIBUTION.
+
+If you would like to contribute to the project, please follow these steps:
+
+1. **Fork the Repository**: Start by forking the repository to your GitHub account.
+
+2. **Create a Branch**: Create a branch in your fork for your contributions. It's best to use a clear and descriptive name for your branch.
+
+3. **Make Your Changes**: Implement your changes, additions, or fixes in your branch. Please adhere to the coding standards and guidelines of the project.
+
+4. **Write or Update Tests**: If you are adding new functionality, please include tests that cover your changes. If you are fixing a bug, ensure that it is covered by tests and consider adding new tests if necessary.
+
+5. **Run the Tests**: Make sure all tests pass, and your changes do not introduce any new issues or regressions.
+
+6. **Update Documentation**: If your changes involve new features or changes that require updates to the documentation, please include those updates in your contributions.
+
+7. **Submit a Pull Request**: Once your changes are complete, and you have tested your contributions, submit a pull request to the original repository. Please provide a clear description of the changes and any relevant issue numbers.
+
+We will review your pull request as soon as possible. Please be patient, and feel free to update your pull request based on feedback from the project maintainers.
+
+Thank you for considering contributing to our project! We look forward to reviewing your contributions.
+
 
 ## License
-
-todo: MIT license?
+We use MIT License for this project. You can find the license in the root directory.
