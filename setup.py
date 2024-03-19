@@ -39,6 +39,7 @@ def get_extras_require():
 setup(
     name='DTRGym',
     version=get_version(),
+    python_requires="== 3.10.*",
     description='A Collection of Reinforcement Learning Environments for Dynamic Treatment Regime Simulation.',
     author='Zhiyao Luo, Mingcheng Zhu',
     author_email='zhiyao.luo@eng.ox.ac.uk',
@@ -50,7 +51,6 @@ setup(
     long_description=open("README.md", encoding="utf8").read(),
     long_description_content_type="text/markdown",
     license="MIT",
-    python_requires='>=3.10',
     keywords=["Healthcare Simulation", "Dynamic Treatment Regime", "Reinforcement Learning"],
     extras_require=get_extras_require(),
     project_urls={

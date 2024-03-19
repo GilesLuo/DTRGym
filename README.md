@@ -1,20 +1,7 @@
-<h3 align="center">DTR-Gym</h3>
+<h3 align="center">DTRGym: Reinforcement learning Environments for Dynamic Treatment Regimes </h3>
 
-<div align="center">
-
-  [![Status](https://img.shields.io/badge/status-active-success.svg)]() 
-  [![GitHub Issues](https://img.shields.io/github/issues/kylelobo/The-Documentation-Compendium.svg)](https://github.com/GilesLuo/SimMedEnv/issues)
-  [![GitHub Pull Requests](https://img.shields.io/github/issues-pr/kylelobo/The-Documentation-Compendium.svg)](https://github.com/GilesLuo/SimMedEnv/pulls)
-  [![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
-
-</div>
 
 ---
-
-<p align="center"> An environment benchmark that increases realism of clinical treatment simulations.
-    <br> 
-</p>
-
 ## 📝 Table of Contents
 - [About](#about)
 - [Getting Started](#getting_started)
