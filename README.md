@@ -21,9 +21,8 @@
 - [Module Description](#module_description)
 - [Usage](#usage)
 - [Reference](#reference)
-- [Release and Contribution](#release_and_contributing)
 - [Special Thanks](#special_thanks)
-- [Acknowledge](#ccknowledgement)
+- [Acknowledge](#acknowledgement)
 
 ## 🧐 About <a name = "about"></a>
 DTR-Gym is a benchmarking platform with four unique simulation environments aimed at improving treatments in areas including cancer chemotherapy, tumor growth, diabetes, and sepsis therapy.
@@ -98,7 +97,7 @@ For different environments, the variations are defined as follows:
 | *SimGlucoseEnv*        | Parameters of different patients          | Use data from simulated glucose monitor.| Further randomize food intake times.| 50%           |
 
 
-## Usage <a name="usage"></a>
+## 🔧 Usage <a name="usage"></a>
 ### Use Default Environment Configuration
 DTR-Gym provides default environment configuration to simulate the real-world clinical scenarios. For example, if you want to use the setting 1, you can initialise the environment by
 ```python
@@ -108,7 +107,7 @@ import DTRGym
 env = gym.make("AhnChemoEnv-continuous-setting1")
 ```
 
-### Customize maximum timestep
+### Customize Maximum Timestep
 You can set the maximum available timestep for the environment by passing value to `max_t`. Here's an example:
 
 ```python
@@ -119,7 +118,7 @@ env = gym.make("AhnChemoEnv-continuous", max_t=50)
 print(env.max_t)
 ```
 
-### Choose action space
+### Choose Action Space
 When creating the environment, you can choose from a discrete action space version or a continuous action space version. For all the environment except "TangSepsisEnv-discrete", which only has the discrete actions space version, you can choose different action space by pass id. The environment with same id prefix are only different on the type of action space. They have the same observation space, same disease dynamics, and the same reward function. So feel free to choose the environment according to your RL policy.
 
 Here's an example:
@@ -136,7 +135,7 @@ print(continuous_env.observation_space.sample() in discrete_env.observation_spac
 
 ```
 
-### Customize action number (for Discrete Action Space Env)
+### Customize Action Number (for Discrete Action Space Env)
 You can also set the the number of action you want the environment to have by using the `n_act`. This is only effective for the discrete version. Here is an example:
 
 ```python
@@ -147,18 +146,16 @@ print(env.n_act)
 ```
 
 ## Reference <a name="reference"></a>
+
 If you use the DTR-Gym in your research, please cite the following paper:
-```
-todo
-```
 
-
-## Release and Contributing <a name = "release_and_contributing"></a>
-todo
+```
+To be updated
+```
 
 
 ## ✍️ Sepcial Thanks <a name = "special_thanks"></a>
-Special thanks to the following contributors that make the DTR-Bench possible:
+Special thanks to the following contributors that make the DTR-Gym possible:
 - [@Mingcheng Zhu](https://github.com/JasonZuu) - who developed DTRGym and produced extensive DTRBench experiments.
 - To be continued
 
