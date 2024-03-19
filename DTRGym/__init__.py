@@ -1,4 +1,4 @@
-__version__ = "0.0.22"
+__version__ = "0.1.0"
 
 from gymnasium.envs.registration import register
 from .ahn_chemo_env import create_AhnChemoEnv_continuous, create_AhnChemoEnv_discrete, \
