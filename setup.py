@@ -9,7 +9,7 @@ def get_version() -> str:
 
 def get_install_requires():
     return [
-        "tianshou==0.5.0",
+        "tianshou>=0.5.0",
         "simglucose==0.2.7",
         "torch>=1.13.0",
         "numpy==1.24.0",
