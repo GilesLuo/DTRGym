@@ -9,11 +9,11 @@ def get_version() -> str:
 
 def get_install_requires():
     return [
-        "torch==1.13.1",
-        "numpy==1.22.3",
+        "torch>=1.13",
+        "numpy==1.25.*",
         "tianshou==0.5.0",
         "simglucose==0.2.3",
-        "urllib3==1.26.15",
+        "urllib3",
         "packaging",
         "tqdm",
         "matplotlib",
