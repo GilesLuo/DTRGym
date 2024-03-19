@@ -34,7 +34,7 @@ The design of DTR-Gym is committed to replicate the intricacies of real clinical
 These instructions will get you a copy of the project up and running on your local machine.
 
 ### Prerequisites
-+ Python 3.10: The project is developed using Python 3.10. It is recommended to use the same version to avoid compatibility issues.
++ Python 3.11+: The project is developed using Python 3.11. It is recommended to use the same or higher version to avoid compatibility issues.
 
 ### Installing
 1. Clone the repository
