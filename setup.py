@@ -19,8 +19,8 @@ def get_install_requires():
         "matplotlib",
         "scipy",
         "pandas",
-        "gymnasium==0.28.1",
-        "gym==0.9.4",
+        "gymnasium",
+        "gym",
     ]
 
 
