@@ -9,9 +9,9 @@ def get_version() -> str:
 
 def get_install_requires():
     return [
-        "tianshou>=0.5.0",
-        "simglucose==0.2.7",
         "torch>=1.13.0",
+        "tianshou==0.5.0",
+        "simglucose==0.2.7",
         "numpy==1.24.0",
         "packaging",
         "tqdm",
@@ -49,7 +49,7 @@ setup(
     long_description=open("README.md", encoding="utf8").read(),
     long_description_content_type="text/markdown",
     license="MIT",
-    python_requires='>=3.11',
+    python_requires='>=3.10',
     keywords=["Healthcare Simulation", "Dynamic Treatment Regime", "Reinforcement Learning"],
     extras_require=get_extras_require(),
     project_urls={
